@@ -2,6 +2,7 @@
 
 A neovim plugin for [https://github.com/micmine/logana](https://github.com/micmine/logana).
 
+[![Demo](https://img.youtube.com/vi/BE72vc-Secs/0.jpg)](https://www.youtube.com/watch?v=BE72vc-Secs)
 
 ## Installation
 Before you start with this install logana.
