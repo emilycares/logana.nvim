@@ -1,17 +1,8 @@
+local file = require("logana.file")
 local M = {}
-local get_file_content = function (path)
-  local f = io.open(path, "rb")
-  if f == nil then
-    return nil
-  end
 
-  local content = f:read("*all")
-  f:close()
-  return content
-end
-
-local toggle_list = function (items)
-  local count = table.getn(items);
+local toggle_list = function(items)
+  local count = table.getn(items)
   if count then
     if count == 0 then
       vim.api.nvim_command("cclose")
@@ -21,57 +12,20 @@ local toggle_list = function (items)
   end
 end
 
-local get_logana_items = function (content)
-  if content == nil then
-    return {}
-  end
+local file_name = ".logana-report"
 
-  local result = {}
-
-  for line in content:gmatch("([^\r\n]*)[\r\n]?") do
-    if line == "" then
-    else
-      local message = vim.split(line, "|")
-
-      local location = message[1]
-      local split_location = vim.split(location, ":")
-      local path = split_location[1]
-      local row = split_location[2]
-      local col = split_location[3]
-
-      table.insert(result, {
-        filename = path,
-        lnum = row,
-        col = col,
-        text = message[2]
-      })
-    end
-  end
-
-  return result
-end
-
-local set_logana_qfl = function (data)
-  local items = get_logana_items(data)
-
-  vim.fn.setqflist({}, ' ', {items = items})
+local set_logana_qfl = function(items)
+  vim.fn.setqflist({}, " ", { items = items })
 
   toggle_list(items)
 end
 
-
-local file_exists = function (name)
-  local f = io.open(name, "r")
-  return f ~= nil and io.close(f)
-end
-
-
-
-M.set_qfl = function ()
-  if file_exists(".logana-report") then
-    local file_content = get_file_content(".logana-report")
+M.set_qfl = function()
+  if file.exists(file_name) then
+    local file_content = file.get_file_content(file_name)
     if file_content then
-      set_logana_qfl(file_content)
+      local items = file.parse(file_content)
+      set_logana_qfl(items)
     end
   end
 end
