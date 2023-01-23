@@ -22,7 +22,7 @@ end
 
 M.set_qfl = function()
   if file.exists(file_name) then
-    local file_content = file.get_file_content(file_name)
+    local file_content = file.get_content(file_name)
     if file_content then
       local items = file.parse(file_content)
       set_logana_qfl(items)
