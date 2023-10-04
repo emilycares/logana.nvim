@@ -14,7 +14,7 @@ end
 
 local file_name = ".logana-report"
 
-local set_logana_qfl = function(items)
+M.set_logana_qfl = function(items)
   vim.fn.setqflist({}, " ", { items = items })
 
   toggle_list(items)
@@ -25,7 +25,7 @@ M.set_qfl = function()
     local file_content = file.get_content(file_name)
     if file_content then
       local items = file.parse(file_content)
-      set_logana_qfl(items)
+      M.set_logana_qfl(items)
     end
   end
 end

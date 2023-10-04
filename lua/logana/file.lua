@@ -26,13 +26,14 @@ M.parse = function(content)
   for line in content:gmatch("([^\r\n]*)[\r\n]?") do
     if line == "" then
     else
+      -- Handle windows drive
       local dive = ""
       if line:sub(2, 2) == ":" then
         dive = line:sub(0, 2)
         line = line:sub(3)
       end
-      local message = vim.split(line, "|")
 
+      local message = vim.split(line, "|")
 
       local location = message[1]
       local text = message[2]
