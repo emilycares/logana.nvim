@@ -23,11 +23,11 @@ vim.keymap.set(
 )
 ```
 
-Analyze a buffer
+## Analyze a buffer
 ``` lua
 local logana = require("logana")
 -- Set a parser (Optional)
-logana.analyze.set_parser("go")
+logana.analyze.set_parser("cargo")
 
 vim.keymap.set(
     {"n"},
