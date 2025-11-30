@@ -1,6 +1,6 @@
 # logana.nvim
 
-A neovim plugin for [https://github.com/micmine/logana](https://github.com/micmine/logana).
+A neovim plugin for [https://github.com/emilycares/logana](https://github.com/emliycares/logana).
 
 [![Demo](https://img.youtube.com/vi/BE72vc-Secs/0.jpg)](https://www.youtube.com/watch?v=BE72vc-Secs)
 
@@ -9,7 +9,7 @@ Before you start with this install logana.
 
 Use your favorite plugin manager
 ``` lua
-use "micmine/logana.nvim"
+use "emilycares/logana.nvim"
 local logana = require("logana");
 
 vim.keymap.set(

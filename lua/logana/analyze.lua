@@ -75,7 +75,7 @@ end
 
 --@param input "buffer" | "line"
 --@param output "qfl" | "go_first"
---@param parser https://github.com/micmine/logana/tree/main/src/analyser
+--@param parser https://github.com/emilycares/logana/tree/main/src/analyser
 M.run_parser = function(input, output, parser)
   local stdout = ""
   local stderr = ""
